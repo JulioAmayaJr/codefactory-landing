@@ -11,6 +11,31 @@ links?.addEventListener("click", (e) => {
 	}
 });
 
+const navItems = document.querySelectorAll<HTMLElement>(".nav-item");
+
+navItems.forEach((item) => {
+	const trigger = item.querySelector<HTMLElement>(".drop-trigger");
+	trigger?.addEventListener("click", (e) => {
+		e.stopPropagation();
+		const isOpen = item.classList.contains("open");
+		navItems.forEach((other) => {
+			other.classList.remove("open");
+			other.querySelector(".drop-trigger")?.setAttribute("aria-expanded", "false");
+		});
+		item.classList.toggle("open", !isOpen);
+		trigger.setAttribute("aria-expanded", String(!isOpen));
+	});
+});
+
+document.addEventListener("click", (e) => {
+	if (!(e.target as HTMLElement).closest(".nav-item")) {
+		navItems.forEach((item) => {
+			item.classList.remove("open");
+			item.querySelector(".drop-trigger")?.setAttribute("aria-expanded", "false");
+		});
+	}
+});
+
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function animateCount(el: HTMLElement) {
