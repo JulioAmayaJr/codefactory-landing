@@ -1,0 +1,107 @@
+---
+const services = [
+	{
+		icon: "⚡",
+		title: "Facturación Electrónica DTE",
+		desc: "Factura, Crédito Fiscal, notas de crédito y anulaciones transmitidas al Ministerio de Hacienda de forma automática. Integración construida directo en tu sistema — no un conector frágil.",
+		featured: true,
+		href: "#dte",
+		cta: "Conocer el facturador →",
+	},
+	{
+		icon: "⚙",
+		title: "Implementación Odoo ERP",
+		desc: "Consultoría, parametrización y puesta en marcha de Odoo de punta a punta, alrededor de tu operación real.",
+		featured: false,
+		cta: "Ver detalles →",
+	},
+	{
+		icon: "▣",
+		title: "Soporte y Hosting",
+		desc: "Servidores administrados, respaldos verificados, SSL y monitoreo continuo. Operamos tu sistema como infraestructura crítica.",
+		featured: false,
+		cta: "Ver detalles →",
+	},
+	{
+		icon: "▲",
+		title: "Migraciones Odoo",
+		desc: "Upgrade entre versiones o migración de datos desde otros sistemas, sin perder historial contable ni detener la operación.",
+		featured: false,
+		cta: "Ver detalles →",
+	},
+	{
+		icon: "◆",
+		title: "Desarrollo a la medida",
+		desc: "Software custom, portales web, integraciones por API, dashboards gerenciales y automatización de procesos.",
+		featured: false,
+		cta: "Ver detalles →",
+	},
+	{
+		icon: "▤",
+		title: "Módulos Odoo personalizados",
+		desc: "Funcionalidad que Odoo no trae de fábrica: procesos de taller, cotizadores, reportes y flujos propios de tu negocio.",
+		featured: false,
+		cta: "Ver detalles →",
+	},
+	{
+		icon: "▥",
+		title: "Aplicaciones móviles",
+		desc: "Apps para tu equipo de campo o tus clientes, conectadas en tiempo real con tu sistema de gestión.",
+		featured: false,
+		cta: "Ver detalles →",
+	},
+	{
+		icon: "☎",
+		title: "Soporte continuo",
+		desc: "Capacitación, ajustes y atención directa en español después del go-live. No desaparecemos al implementar.",
+		featured: false,
+		cta: "Ver detalles →",
+	},
+];
+---
+
+<section class="section services" id="servicios">
+	<div class="wrap">
+		<span class="kicker dark">Lo que hacemos</span>
+		<h2>Un solo equipo. Ocho formas de acelerar tu negocio.</h2>
+		<p class="sub">Desde implementar Odoo hasta desarrollar tu aplicación a la medida y mantener tu facturación electrónica al día — bajo un solo proveedor.</p>
+		<div class="grid">
+			{services.map((svc) => {
+				const Tag = svc.featured ? "a" : "div";
+				return (
+					<Tag class={svc.featured ? "svc featured reveal" : "svc reveal"} href={svc.featured ? svc.href : undefined}>
+						{svc.featured && <span class="tag">Producto destacado</span>}
+						<div class="svc-icon">{svc.icon}</div>
+						<h3>{svc.title}</h3>
+						<p>{svc.desc}</p>
+						<span class="more">{svc.cta}</span>
+					</Tag>
+				);
+			})}
+		</div>
+	</div>
+</section>
+
+<style>
+.services .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px}
+.svc{background:var(--white);border:1px solid var(--gray-line);border-radius:var(--radius);padding:30px 26px;transition:all .22s ease;display:flex;flex-direction:column}
+.svc:hover{transform:translateY(-6px);box-shadow:0 22px 54px rgba(1,30,65,.12);border-color:transparent}
+.svc.featured{grid-column:span 2;background:var(--navy);color:var(--white);border-color:var(--navy)}
+.svc.featured p{color:var(--dark-text)}
+.svc .tag{display:inline-block;align-self:flex-start;background:var(--accent);color:var(--navy);font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:4px 11px;border-radius:6px;margin-bottom:16px}
+.svc-icon{width:46px;height:46px;border-radius:12px;background:rgba(0,194,255,.1);color:#0084b8;display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:18px;font-weight:700}
+.svc.featured .svc-icon{background:rgba(0,194,255,.15);color:var(--accent)}
+.svc h3{font-size:17.5px;font-weight:800;margin-bottom:9px}
+.svc.featured h3{font-size:22px}
+.svc p{font-size:14px;color:var(--gray-text);flex:1}
+.svc .more{margin-top:18px;font-size:13.5px;font-weight:700;color:#0084b8}
+.svc.featured .more{color:var(--accent)}
+
+@media (max-width:1024px){
+  .services .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  .services .grid{grid-template-columns:1fr}
+  .svc.featured{grid-column:span 1}
+}
+</style>

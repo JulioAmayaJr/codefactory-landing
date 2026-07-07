@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="theme-color" content="#011e41" />
+	<title>CodeFactory · Tecnología empresarial y Odoo en El Salvador</title>
+	<meta name="description" content="Implementamos Odoo ERP, desarrollamos software a la medida y automatizamos la facturación electrónica DTE para empresas de El Salvador." />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+	<slot />
+	<script>
+		import "../scripts/main.ts";
+	</script>
+</body>
+</html>
+
+<style is:global>
+:root{
+  --navy:#011e41;
+  --navy-2:#032a58;
+  --navy-3:#0a3a70;
+  --accent:#00c2ff;
+  --accent-2:#38e0b0;
+  --white:#ffffff;
+  --gray-bg:#f4f7fb;
+  --gray-line:#e4e9f1;
+  --gray-text:#5a6b82;
+  --dark-line:rgba(255,255,255,.12);
+  --dark-text:#a9bcd4;
+  --radius:16px;
+  --maxw:1200px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--navy);background:var(--white);font-size:16px;line-height:1.65}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{line-height:1.15;letter-spacing:-.02em}
+h2{font-size:clamp(28px,3.6vw,42px);font-weight:800}
+.section{padding:100px 0}
+.kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.kicker.dark{color:#0084b8}
+.sub{font-size:17.5px;color:var(--gray-text);max-width:640px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:15px 30px;border-radius:10px;transition:all .2s ease;cursor:pointer;border:none}
+.btn-accent{background:var(--accent);color:var(--navy)}
+.btn-accent:hover{background:#33cfff;transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,194,255,.35)}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid var(--dark-line)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.btn-navy{background:var(--navy);color:var(--white)}
+.btn-navy:hover{background:var(--navy-3);transform:translateY(-2px)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+@media (max-width:600px){
+  .section{padding:68px 0}
+}
+</style>

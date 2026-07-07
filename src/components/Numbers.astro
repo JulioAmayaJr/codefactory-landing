@@ -1,0 +1,38 @@
+---
+const stats = [
+	{ count: 10, prefix: "+", suffix: "", label: "Años de experiencia" },
+	{ count: 20, prefix: "+", suffix: "", label: "Proyectos completados" },
+	{ count: 4, prefix: "", suffix: "", label: "Empresas en producción" },
+	{ count: 100, prefix: "", suffix: "%", label: "Sistemas con DTE al día" },
+	{ count: 24, prefix: "", suffix: "/7", label: "Monitoreo de servidores" },
+];
+---
+
+<section class="numbers">
+	<div class="wrap">
+		<span class="kicker">Lo que nos respalda</span>
+		<h2>Números reales, no promesas</h2>
+		<div class="grid">
+			{stats.map((stat) => (
+				<div class="num reveal">
+					<b data-count={stat.count} data-prefix={stat.prefix || undefined} data-suffix={stat.suffix || undefined}>0</b>
+					<span>{stat.label}</span>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+.numbers{background:var(--navy);color:var(--white);padding:88px 0}
+.numbers .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:52px;text-align:center}
+.num b{display:block;font-size:clamp(30px,3.4vw,44px);font-weight:900;color:var(--accent)}
+.num span{font-size:13.5px;color:var(--dark-text);font-weight:500}
+
+@media (max-width:1024px){
+  .numbers .grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:600px){
+  .numbers .grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>

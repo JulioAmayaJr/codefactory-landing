@@ -1,0 +1,69 @@
+---
+const documents = [
+	{ name: "Factura (01)", sistema: true, pos: true },
+	{ name: "Crédito Fiscal (03)", sistema: true, pos: true },
+	{ name: "Nota de Crédito (05)", sistema: true, pos: false },
+	{ name: "Sujeto Excluido (14)", sistema: true, pos: false },
+	{ name: "Anulaciones y contingencia", sistema: true, pos: true },
+];
+---
+
+<section class="section" id="dte">
+	<div class="wrap dte-grid">
+		<div>
+			<span class="kicker dark">Nuestro facturador electrónico</span>
+			<h2>Facturación DTE integrada a tu operación</h2>
+			<p class="sub">Cada documento se firma, transmite y sella ante el Ministerio de Hacienda de forma automática desde tu sistema o punto de venta. Empezá con <strong>Factura y Crédito Fiscal</strong>, y sumá los tipos de documento que tu negocio necesite.</p>
+			<span class="dte-note">Actualizados a la normativa vigente del Ministerio de Hacienda · sin excepciones</span>
+			<div style="display:flex;gap:14px;flex-wrap:wrap">
+				<a href="#contacto" class="btn btn-navy">Solicitar demo</a>
+				<a href="#contacto" class="btn btn-accent">Hablar con un asesor</a>
+			</div>
+		</div>
+		<div class="matrix reveal">
+			<div class="mx-head">
+				<b>Documentos electrónicos</b>
+				<span class="pill live">v1.0 LIVE</span>
+			</div>
+			<table class="mx">
+				<thead>
+					<tr><th>Documento</th><th>Sistema</th><th>Punto de venta</th></tr>
+				</thead>
+				<tbody>
+					{documents.map((doc) => (
+						<tr>
+							<td>{doc.name}</td>
+							<td>{doc.sistema ? <span class="dot-live">●</span> : <span class="dot-soon">—</span>}</td>
+							<td>{doc.pos ? <span class="dot-live">●</span> : <span class="dot-soon">—</span>}</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+			<div class="mx-foot"><span class="dl">Disponible</span><span>— No aplica</span></div>
+		</div>
+	</div>
+</section>
+
+<style>
+.dte-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;margin-top:8px}
+.dte-grid .sub strong{color:var(--navy)}
+.dte-note{display:inline-block;background:rgba(0,194,255,.08);border:1px solid rgba(0,132,184,.25);color:#00679a;font-size:13.5px;font-weight:700;padding:9px 18px;border-radius:10px;margin:24px 0 30px}
+.matrix{background:var(--navy);color:var(--white);border-radius:var(--radius);padding:32px;box-shadow:0 30px 70px rgba(1,30,65,.28)}
+.matrix .mx-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.matrix .mx-head b{font-size:16px;font-weight:800}
+table.mx{width:100%;border-collapse:collapse;font-size:14px}
+table.mx th{text-align:left;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:#7e94b3;font-weight:700;padding:10px 8px;border-bottom:1px solid var(--dark-line)}
+table.mx td{padding:13px 8px;border-bottom:1px solid var(--dark-line);font-weight:600}
+table.mx tr:last-child td{border-bottom:none}
+.dot-live{color:var(--accent-2);font-weight:800}
+.dot-soon{color:#7e94b3;font-weight:600;font-size:12.5px}
+.mx-foot{display:flex;gap:18px;margin-top:18px;font-size:12px;color:#7e94b3;font-weight:600}
+.mx-foot .dl::before{content:"● ";color:var(--accent-2)}
+
+.pill{font-size:11px;font-weight:800;padding:4px 11px;border-radius:999px;letter-spacing:.05em;text-transform:uppercase}
+.pill.live{background:rgba(56,224,176,.15);color:var(--accent-2);border:1px solid rgba(56,224,176,.35)}
+
+@media (max-width:900px){
+  .dte-grid{grid-template-columns:1fr;gap:48px}
+}
+</style>

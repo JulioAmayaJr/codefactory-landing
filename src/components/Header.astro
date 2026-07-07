@@ -1,0 +1,46 @@
+---
+const navLinks = [
+	{ href: "#servicios", label: "Soluciones" },
+	{ href: "#dte", label: "Facturación DTE" },
+	{ href: "#verticales", label: "Industrias" },
+	{ href: "#clientes", label: "Clientes" },
+	{ href: "#contacto", label: "Contacto" },
+];
+---
+
+<header>
+	<div class="wrap nav">
+		<a href="#" class="brand">
+			<img src="img/logo-codefactory.png" alt="CodeFactory" />
+			CodeFactory
+		</a>
+		<nav class="nav-links" id="navLinks">
+			{navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+		</nav>
+		<div class="nav-right">
+			<a href="tel:+50300000000" class="nav-phone">+503 0000-0000</a>
+			<a href="#contacto" class="btn btn-accent">Contáctenos</a>
+			<button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+		</div>
+	</div>
+</header>
+
+<style>
+header{position:sticky;top:0;z-index:100;background:rgba(1,30,65,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--dark-line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;color:var(--white);font-weight:800;font-size:20px;letter-spacing:-.02em}
+.brand img{height:40px;width:auto}
+.nav-links{display:flex;gap:30px;font-size:14.5px;font-weight:600;color:#c3d2e6}
+.nav-links a:hover{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:18px}
+.nav-phone{color:#c3d2e6;font-size:14px;font-weight:600}
+.nav-phone:hover{color:var(--accent)}
+.nav .btn{padding:11px 22px;font-size:14px}
+.nav-toggle{display:none;background:none;border:none;color:var(--white);font-size:27px;cursor:pointer}
+
+@media (max-width:900px){
+  .nav-links,.nav-phone,.nav .btn-accent{display:none}
+  .nav-toggle{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:74px;left:0;right:0;background:var(--navy);padding:26px 24px;gap:20px;border-bottom:1px solid var(--dark-line)}
+}
+</style>

@@ -1,0 +1,33 @@
+---
+const trust = [
+	"Diagnóstico inicial sin costo",
+	"Respuesta en menos de 24 horas",
+	"Soporte local en El Salvador",
+];
+---
+
+<section class="cta" id="contacto">
+	<div class="wrap cta-inner">
+		<span class="kicker">¿Listo para digitalizar?</span>
+		<h2>Hablemos sobre tu próximo proyecto tecnológico.</h2>
+		<p>Te acompañamos desde el diagnóstico hasta la puesta en marcha. Contanos qué necesitás y diseñamos la solución correcta para tu negocio.</p>
+		<div class="cta-actions">
+			<a href="mailto:info@codefactory.lat" class="btn btn-accent">Escríbenos un correo</a>
+			<a href="https://wa.me/50300000000" class="btn btn-outline">Escríbenos por WhatsApp</a>
+		</div>
+		<div class="trust">
+			{trust.map((item) => <span>{item}</span>)}
+		</div>
+	</div>
+</section>
+
+<style>
+.cta{background:var(--navy);color:var(--white);position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(0,194,255,.14),transparent 65%);pointer-events:none}
+.cta-inner{text-align:center;padding:110px 0;position:relative;z-index:1}
+.cta h2{max-width:680px;margin:0 auto}
+.cta p{color:var(--dark-text);max-width:560px;margin:18px auto 38px;font-size:17px}
+.cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:44px}
+.trust{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;font-size:14px;color:var(--dark-text);font-weight:600}
+.trust span::before{content:"✓ ";color:var(--accent-2);font-weight:800}
+</style>

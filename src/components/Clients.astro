@@ -1,0 +1,36 @@
+---
+const clients = [
+	{ name: "Taller Super Mario's", image: "img/cliente-taller-super-mario.png" },
+	{ name: "Acuario Exotic Fantasy", image: "img/cliente-acuario-exotic-fantasy.png" },
+	{ name: "MundoToys", image: "img/cliente-mundotoys.png" },
+	{ name: "Ferretería SapoteDulce", image: "img/cliente-ferreteria-sapotedulce.png" },
+];
+---
+
+<section class="clients" id="clientes">
+	<div class="wrap head">
+		<span class="kicker dark">Empresas que confían en CodeFactory</span>
+		<h2>Negocios que operan todos los días con nuestros sistemas</h2>
+	</div>
+	<div class="marquee">
+		<div class="marquee-track">
+			{clients.map((client) => <img src={client.image} alt={client.name} />)}
+			{clients.map((client) => <img src={client.image} alt={client.name} />)}
+		</div>
+	</div>
+</section>
+
+<style>
+.clients{background:var(--gray-bg);padding:84px 0;border-bottom:1px solid var(--gray-line)}
+.clients .head{text-align:center;margin-bottom:52px}
+.marquee{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-track{display:flex;gap:80px;align-items:center;width:max-content;animation:scroll 28s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.marquee img{height:120px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.65;transition:all .25s ease}
+.marquee img:hover{filter:none;opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  .marquee-track{animation:none}
+}
+</style>

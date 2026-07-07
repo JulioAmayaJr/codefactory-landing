@@ -1,0 +1,48 @@
+---
+const reasons = [
+	{
+		title: "Especialistas en Odoo",
+		desc: "Trabajamos con Odoo en sus versiones más recientes: implementación, módulos personalizados, migraciones y punto de venta. Conocemos el sistema por dentro, a nivel de código.",
+	},
+	{
+		title: "DTE siempre al día",
+		desc: "La facturación electrónica de El Salvador cambia, y nosotros la mantenemos al día por vos. Cada cambio de normativa del Ministerio de Hacienda se aplica a tu sistema sin que tengás que preocuparte.",
+	},
+	{
+		title: "Desarrollo propio, no solo configuración",
+		desc: "Somos desarrolladores. Cuando tu negocio necesita algo que ningún sistema trae de fábrica, lo construimos: módulos, integraciones, apps móviles y portales web.",
+	},
+	{
+		title: "Compromiso post go-live",
+		desc: "No desaparecemos después de implementar. Soporte directo en español, capacitación a tu equipo y atención inmediata cuando algo urge. Tu operación diaria es nuestra prioridad.",
+	},
+];
+---
+
+<section class="section why">
+	<div class="wrap">
+		<span class="kicker dark">Por qué CodeFactory</span>
+		<h2>Cuatro razones por las que nuestros clientes nos eligieron</h2>
+		<div class="grid">
+			{reasons.map((reason) => (
+				<div class="why-card reveal">
+					<h3>{reason.title}</h3>
+					<p>{reason.desc}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+.why-card{border:1px solid var(--gray-line);border-radius:var(--radius);padding:34px 30px;background:var(--white);transition:all .22s ease}
+.why-card:hover{transform:translateY(-4px);box-shadow:0 22px 54px rgba(1,30,65,.10)}
+.why-card h3{font-size:19px;font-weight:800;margin-bottom:11px;display:flex;align-items:center;gap:12px}
+.why-card h3::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--accent);flex-shrink:0}
+.why-card p{font-size:14.5px;color:var(--gray-text)}
+.why .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:56px}
+
+@media (max-width:900px){
+  .why .grid{grid-template-columns:1fr}
+}
+</style>

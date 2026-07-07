@@ -1,0 +1,79 @@
+---
+const verticals = [
+	{
+		no: "01 · VERTICAL · RETAIL",
+		title: "Retail y Comercios",
+		desc: "Punto de venta conectado a inventario, contabilidad y facturación electrónica en tiempo real.",
+		items: [
+			"POS multi-caja con DTE en el ticket",
+			"Control de inventario y compras",
+			"Reportes de ventas por sucursal",
+		],
+	},
+	{
+		no: "02 · VERTICAL · TALLERES",
+		title: "Talleres Automotrices",
+		desc: "Gestión completa del taller: órdenes de trabajo, repuestos, anticipos y facturación en un solo sistema.",
+		items: [
+			"Órdenes de trabajo por etapas",
+			"Anticipos y cobro desde el POS",
+			"Control de repuestos e inventario",
+		],
+	},
+	{
+		no: "03 · VERTICAL · FERRETERÍA",
+		title: "Ferreterías y Distribución",
+		desc: "Inventarios grandes, precios por lista y ventas de mostrador con crédito fiscal al instante.",
+		items: [
+			"Catálogo extenso con códigos de barra",
+			"Listas de precios y descuentos",
+			"Factura o CCF directo en caja",
+		],
+	},
+];
+
+const chips = ["Clínicas", "Academias", "Servicios profesionales", "Distribución", "Mascotas y acuarios"];
+---
+
+<section class="section verticals" id="verticales">
+	<div class="wrap">
+		<span class="kicker dark">Industrias atendidas</span>
+		<h2>Verticales con implementación probada</h2>
+		<p class="sub">Tres verticales con sistemas ya operando en producción. Otras industrias las atendemos vía implementación Odoo personalizada.</p>
+		<div class="grid">
+			{verticals.map((vert) => (
+				<div class="vert reveal">
+					<div class="no">{vert.no}</div>
+					<h3>{vert.title}</h3>
+					<p>{vert.desc}</p>
+					<ul>
+						{vert.items.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+			))}
+		</div>
+		<div class="chips">
+			También atendemos:
+			{chips.map((chip) => <span>{chip}</span>)}
+		</div>
+	</div>
+</section>
+
+<style>
+.verticals{background:var(--gray-bg)}
+.verticals .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+.vert{background:var(--white);border:1px solid var(--gray-line);border-radius:var(--radius);padding:34px 28px;transition:all .22s ease;display:flex;flex-direction:column}
+.vert:hover{transform:translateY(-6px);box-shadow:0 22px 54px rgba(1,30,65,.12)}
+.vert .no{font-size:13px;font-weight:800;color:#0084b8;letter-spacing:.1em;margin-bottom:14px}
+.vert h3{font-size:20px;font-weight:800;margin-bottom:12px}
+.vert>p{font-size:14.5px;color:var(--gray-text);margin-bottom:20px}
+.vert ul{list-style:none;display:grid;gap:10px;margin-bottom:6px;flex:1}
+.vert li{display:flex;gap:10px;font-size:14px;color:var(--navy);font-weight:500}
+.vert li::before{content:"—";color:var(--accent);font-weight:800;flex-shrink:0}
+.chips{margin-top:46px;text-align:center;font-size:14px;color:var(--gray-text)}
+.chips span{display:inline-block;background:var(--white);border:1px solid var(--gray-line);border-radius:999px;padding:7px 18px;margin:5px 4px;font-weight:600;color:var(--navy);font-size:13.5px}
+
+@media (max-width:900px){
+  .verticals .grid{grid-template-columns:1fr}
+}
+</style>

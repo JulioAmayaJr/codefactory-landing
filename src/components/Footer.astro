@@ -1,0 +1,99 @@
+---
+const footerColumns = [
+	{
+		title: "Soluciones",
+		links: [
+			{ label: "Implementación Odoo", href: "#servicios" },
+			{ label: "Facturación electrónica", href: "#dte" },
+			{ label: "Soporte y Hosting", href: "#servicios" },
+			{ label: "Desarrollo a medida", href: "#servicios" },
+			{ label: "Migraciones Odoo", href: "#servicios" },
+		],
+	},
+	{
+		title: "Industrias",
+		links: [
+			{ label: "Retail y POS", href: "#verticales" },
+			{ label: "Talleres", href: "#verticales" },
+			{ label: "Ferreterías", href: "#verticales" },
+		],
+	},
+];
+
+const contact = [
+	{ label: "info@codefactory.lat", href: "mailto:info@codefactory.lat" },
+	{ label: "WhatsApp", href: "https://wa.me/50300000000" },
+	{ label: "+503 0000-0000", href: "tel:+50300000000" },
+	{ label: "San Miguel, El Salvador", href: null },
+];
+---
+
+<footer>
+	<div class="wrap">
+		<div class="footer-top">
+			<div>
+				<div class="f-brand">
+					<img src="img/logo-codefactory-blanco.png" alt="CodeFactory" />
+					CodeFactory
+				</div>
+				<p>Implementación de Odoo, facturación electrónica DTE y desarrollo de software a la medida para empresas que están digitalizando su operación en El Salvador.</p>
+			</div>
+			{footerColumns.map((col) => (
+				<div>
+					<h4>{col.title}</h4>
+					<ul>
+						{col.links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+					</ul>
+				</div>
+			))}
+			<div>
+				<h4>Contacto</h4>
+				<ul>
+					{contact.map((item) => (
+						<li>{item.href ? <a href={item.href}>{item.label}</a> : item.label}</li>
+					))}
+				</ul>
+			</div>
+		</div>
+		<div class="newsletter">
+			<div>
+				<h3>Recibe novedades de CodeFactory en tu inbox</h3>
+				<p>Cambios de normativa DTE, novedades de producto y guías útiles. Sin spam — solo cuando hay algo valioso que compartir.</p>
+			</div>
+			<div class="news-form">
+				<input type="email" placeholder="tu@correo.com" id="newsEmail" aria-label="Correo electrónico" />
+				<button class="btn btn-accent" id="newsBtn">Suscribirse</button>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<span>© 2026 <strong style="color:#fff">CodeFactory</strong> · Todos los derechos reservados.</span>
+			<span>facturacion.codefactory.lat</span>
+		</div>
+	</div>
+</footer>
+
+<style>
+footer{background:#01162f;color:#8fa4c0;font-size:14px}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;padding:76px 0 56px;border-bottom:1px solid var(--dark-line)}
+.footer-top h4{color:var(--white);font-size:14px;font-weight:700;margin-bottom:18px;letter-spacing:.02em}
+.footer-top ul{list-style:none;display:grid;gap:11px}
+.footer-top a:hover{color:var(--accent)}
+.f-brand{display:flex;align-items:center;gap:10px;color:var(--white);font-weight:800;font-size:19px;margin-bottom:16px}
+.f-brand img{height:36px;width:auto}
+.newsletter{padding:44px 0;border-bottom:1px solid var(--dark-line);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.newsletter h3{color:var(--white);font-size:19px;font-weight:800;margin-bottom:6px}
+.newsletter p{font-size:13.5px;max-width:420px}
+.news-form{display:flex;gap:10px;flex:1;max-width:440px}
+.news-form input{flex:1;background:rgba(255,255,255,.06);border:1px solid var(--dark-line);border-radius:10px;padding:13px 18px;color:var(--white);font-family:inherit;font-size:14px;outline:none}
+.news-form input:focus{border-color:var(--accent)}
+.news-form .btn{padding:13px 24px;font-size:14px}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:28px 0;flex-wrap:wrap;gap:14px;font-size:13px}
+
+@media (max-width:900px){
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .footer-top{grid-template-columns:1fr}
+  .news-form{flex-direction:column;max-width:none}
+}
+</style>
