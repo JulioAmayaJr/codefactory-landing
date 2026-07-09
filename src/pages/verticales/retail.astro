@@ -2,12 +2,30 @@
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import PageHero from "../../components/shared/PageHero.astro";
-import MockCard from "../../components/shared/MockCard.astro";
+import MockDashboard from "../../components/shared/MockDashboard.astro";
 import FeatureGrid from "../../components/shared/FeatureGrid.astro";
 import ModuleChips from "../../components/shared/ModuleChips.astro";
 import StatsBand from "../../components/shared/StatsBand.astro";
 import Cta from "../../components/Cta.astro";
 import Footer from "../../components/Footer.astro";
+
+const metrics = [
+	{ icon: "/img/icons/retail/ventas.svg", value: "342", label: "Ventas del día", sublabel: "Tickets emitidos" },
+	{ icon: "/img/icons/retail/dte.svg", value: "296", label: "DTE emitidos hoy", sublabel: "Transmitidos a Hacienda" },
+	{ icon: "/img/icons/retail/inventario.svg", value: "3,480", label: "Productos en inventario", sublabel: "Sincronizado en tiempo real" },
+	{ icon: "/img/icons/retail/sucursales.svg", value: "4", label: "Sucursales activas", sublabel: "Conectadas al POS central" },
+];
+
+const paymentMethods = [
+	{ icon: "/img/icons/retail/efectivo.svg", label: "Efectivo", accent: false },
+	{ icon: "/img/icons/retail/transferencia.svg", label: "Transferencia", accent: false },
+	{ icon: "/img/icons/retail/tarjeta.svg", label: "Tarjeta", accent: true },
+];
+
+const floatChips = [
+	{ icon: "/img/icons/retail/sucursal.svg", text: '<span class="dash-float-accent">Multi-sucursal</span> en tiempo real', style: "bottom:16px;left:-208px" },
+	{ icon: "/img/icons/retail/certificado.svg", text: "DTE certificado", sublabel: "Ministerio de Hacienda", style: "bottom:70px;right:-20px" },
+];
 
 const features = [
 	{ icon: "▣", title: "POS multi-caja", desc: "Varias cajas vendiendo al mismo tiempo, con inventario y caja sincronizados en tiempo real." },
@@ -31,7 +49,7 @@ const whyMetrics = [
 ---
 
 <Layout
-	title="Retail y Comercios · CodeFactory"
+	title="CodeFactory · Retail y Comercios"
 	description="Punto de venta multi-caja, inventario, contabilidad y facturación electrónica DTE conectados para comercios y jugueterías en El Salvador."
 >
 	<Header />
@@ -43,28 +61,24 @@ const whyMetrics = [
 		ctaPrimary={{ text: "Solicitar demo", href: "/#contacto" }}
 		ctaSecondary={{ text: "Ver clientes", href: "/#clientes" }}
 	>
-		<MockCard
-			icon="▦"
-			title="POS · Caja 1"
-			badgeText="Venta activa"
-			badgeTone="live"
-			floats={[
-				{ icon: "▣", text: "Impresora térmica", style: "top:-16px;left:28px" },
-				{ text: "Escáner de código", style: "top:-16px;right:-16px" },
-				{ text: "Multi-caja", style: "bottom:-16px;right:30px" },
-			]}
+		<MockDashboard
+			icon="/img/icons/retail/header.svg"
+			titleBold="Retail"
+			titleNormal="Live Dashboard"
+			badgeText="Operativo"
+			graphLabel="Ventas en tiempo real"
+			metrics={metrics}
+			floats={floatChips}
 		>
-			<div class="pos-lines">
-				<div class="pos-line"><span>2x Juguete premium</span><b>$18.00</b></div>
-				<div class="pos-line"><span>1x Accesorio</span><b>$4.50</b></div>
-				<div class="pos-line"><span>3x Bebidas</span><b>$7.50</b></div>
+			<div class="pay-row">
+				{paymentMethods.map((method) => (
+					<button class:list={["pay-btn", method.accent && "pay-btn-accent"]}>
+						<img src={method.icon} width="20" height="20" alt="" />
+						{method.label}
+					</button>
+				))}
 			</div>
-			<div class="pos-total"><span>Total (IVA incluido)</span><b>$30.00</b></div>
-			<div class="pos-actions">
-				<button class="pos-btn">Efectivo</button>
-				<button class="pos-btn pos-btn-accent">Tarjeta · DTE</button>
-			</div>
-		</MockCard>
+		</MockDashboard>
 	</PageHero>
 
 	<FeatureGrid kicker="Características" title="Todo lo que necesita tu comercio" items={features} />
@@ -78,12 +92,13 @@ const whyMetrics = [
 </Layout>
 
 <style>
-.pos-lines{display:grid;gap:8px;margin-bottom:14px}
-.pos-line{display:flex;justify-content:space-between;background:rgba(255,255,255,.05);border:1px solid var(--dark-line);border-radius:8px;padding:10px 12px;font-size:13px}
-.pos-line span{color:#c9d6e6}
-.pos-line b{font-weight:700}
-.pos-total{display:flex;justify-content:space-between;padding:12px 4px;border-top:1px solid var(--dark-line);margin-bottom:16px;font-weight:800;font-size:14px}
-.pos-actions{display:flex;gap:10px}
-.pos-btn{flex:1;padding:11px;border-radius:8px;border:1px solid var(--dark-line);background:rgba(255,255,255,.05);color:var(--white);font-weight:700;font-size:12.5px;font-family:inherit;cursor:pointer}
-.pos-btn-accent{background:var(--accent);color:var(--navy);border-color:transparent}
+.pay-row{display:flex;gap:12px}
+.pay-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:var(--white);font-family:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.pay-btn img{object-fit:contain;flex-shrink:0}
+.pay-btn-accent{background:var(--accent);color:var(--navy);border-color:transparent}
+
+@media (max-width:900px){
+  .pay-row{flex-wrap:wrap}
+  .pay-btn{flex:1 1 100%}
+}
 </style>

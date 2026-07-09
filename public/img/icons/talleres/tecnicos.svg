@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="96" height="96" fill="#2EC4B6">
+  <!-- gorra -->
+  <path d="M8.2 6.8a4 4 0 0 1 7.6 0h1.2a.8.8 0 0 1 0 1.6H7a.8.8 0 0 1 0-1.6h1.2z"/>
+  <!-- cara -->
+  <path d="M8.4 9h7.2a3.6 3.6 0 0 1-7.2 0z"/>
+  <!-- overol -->
+  <path d="M4 20.5c0-3.3 3.6-5.5 8-5.5s8 2.2 8 5.5v.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-.5z"/>
+  <!-- tirantes / pechera (recorte en color fondo) -->
+  <path d="M10.5 16.2h3v5.8h-3z" fill="#0B1B2B" opacity="0"/>
+</svg>
