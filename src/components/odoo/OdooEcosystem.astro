@@ -1,0 +1,36 @@
+---
+const ecosystemCategories = [
+	{ name: "Ventas & Clientes", apps: ["CRM", "Ventas", "Punto de Venta", "eCommerce"] },
+	{ name: "Operaciones", apps: ["Inventario", "Manufactura", "Compras"] },
+	{ name: "Finanzas", apps: ["Contabilidad", "Documentos", "Tableros"] },
+	{ name: "Capital humano", apps: ["RR.HH.", "Hojas de horas"] },
+	{ name: "Productividad & Web", apps: ["Sitio web", "Proyectos", "Soporte"] },
+];
+---
+
+<section class="section">
+	<div class="wrap">
+		<span class="kicker dark">Ecosistema modular</span>
+		<h2>Una app para cada área de tu negocio</h2>
+		<div class="eco-grid">
+			{ecosystemCategories.map((cat) => (
+				<div class="eco-cat reveal">
+					<h3>{cat.name}</h3>
+					<div class="eco-chips">
+						{cat.apps.map((app) => <span class="eco-chip">{app}</span>)}
+					</div>
+				</div>
+			))}
+		</div>
+		<p class="eco-note">Y muchas más — Odoo cuenta con 40,000+ apps en su marketplace oficial.</p>
+	</div>
+</section>
+
+<style>
+.eco-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:56px}
+.eco-cat{background:var(--white);border:1px solid var(--gray-line);border-radius:var(--radius);padding:26px}
+.eco-cat h3{font-size:16px;font-weight:800;margin-bottom:16px}
+.eco-chips{display:flex;flex-wrap:wrap;gap:8px}
+.eco-chip{display:inline-block;background:var(--gray-bg);border:1px solid var(--gray-line);border-radius:999px;padding:6px 14px;font-weight:600;color:var(--navy);font-size:13px}
+.eco-note{margin-top:38px;text-align:center;font-size:14px;color:var(--gray-text)}
+</style>

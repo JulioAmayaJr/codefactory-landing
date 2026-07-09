@@ -1,0 +1,42 @@
+---
+const whyMetrics = [
+	{ count: 10, prefix: "+", label: "años de experiencia" },
+	{ count: 4, suffix: "+", label: "empresas Odoo en producción" },
+	{ staticValue: "v18 → v19", label: "versiones dominadas · migramos entre ellas" },
+	{ count: 100, suffix: "%", label: "DTE con normativa vigente" },
+	{ staticValue: "Soporte local", label: "en El Salvador" },
+];
+---
+
+<section class="odoo-why">
+	<div class="wrap">
+		<span class="kicker">Lo que nos respalda</span>
+		<h2>Por qué CodeFactory</h2>
+		<div class="grid">
+			{whyMetrics.map((metric) => (
+				<div class="odoo-metric reveal">
+					{metric.count ? (
+						<b data-count={metric.count} data-prefix={metric.prefix} data-suffix={metric.suffix}>0</b>
+					) : (
+						<b>{metric.staticValue}</b>
+					)}
+					<span>{metric.label}</span>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+.odoo-why{background:var(--navy);color:var(--white);padding:88px 0}
+.odoo-why .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:52px;text-align:center}
+.odoo-metric b{display:block;font-size:clamp(22px,2.6vw,32px);font-weight:900;color:var(--accent)}
+.odoo-metric span{font-size:13.5px;color:var(--dark-text);font-weight:500}
+
+@media (max-width:1024px){
+  .odoo-why .grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:600px){
+  .odoo-why .grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>

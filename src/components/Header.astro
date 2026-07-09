@@ -1,29 +1,28 @@
 ---
 const serviceItems = [
-	{ icon: "⚙", title: "Implementación de Odoo ERP", subtitle: "Consultoría, desarrollo y soporte", href: "#servicios" },
-	{ icon: "◆", title: "Desarrollos y Automatizaciones", subtitle: "Software a medida e integraciones", href: "#servicios" },
-	{ icon: "▣", title: "Soporte y Hosting Odoo", subtitle: "Continuidad operativa y monitoreo", href: "#servicios" },
-	{ icon: "▲", title: "Migraciones Odoo", subtitle: "Upgrade y migración sin perder historial", href: "#servicios" },
-	{ icon: "⚡", title: "Facturación electrónica", subtitle: "DTE, FEL e integraciones por API", href: "#dte" },
+	{ icon: "⚙", title: "Implementación de Odoo ERP", subtitle: "Consultoría, desarrollo y soporte", href: "/soluciones/odoo" },
+	{ icon: "◆", title: "Desarrollos y Automatizaciones", subtitle: "Software a medida e integraciones", href: "/soluciones/desarrollo" },
+	{ icon: "▣", title: "Soporte y Hosting Odoo", subtitle: "Continuidad operativa y monitoreo", href: "/soluciones/hosting" },
+	{ icon: "▲", title: "Migraciones Odoo", subtitle: "Upgrade y migración sin perder historial", href: "/soluciones/migraciones" },
+	{ icon: "⚡", title: "Facturación electrónica", subtitle: "DTE, FEL e integraciones por API", href: "/soluciones/facturacion-dte" },
 ];
 
 const solutionItems = [
-	{ icon: "▥", title: "Treming Workspaces", subtitle: "Aplicaciones empresariales SaaS", href: "#servicios" },
-	{ icon: "✚", title: "Vertical Hospitalaria", subtitle: "Para hospitales y centros médicos", href: "#verticales" },
-	{ icon: "⌂", title: "Vertical Hotelera", subtitle: "Para hoteles y restaurantes", href: "#verticales" },
-	{ icon: "▦", title: "Retail y POS", subtitle: "Comercios multi-sucursal", href: "#verticales" },
+	{ icon: "▦", title: "Retail y POS", subtitle: "Comercios multi-sucursal", href: "/verticales/retail" },
+	{ icon: "◈", title: "Talleres Automotrices", subtitle: "Órdenes de trabajo y POS de taller", href: "/verticales/talleres" },
+	{ icon: "▤", title: "Ferreterías y Distribución", subtitle: "Inventario grande y crédito fiscal", href: "/verticales/ferreterias" },
 ];
 
 const companyLinks = [
-	{ label: "Clientes", href: "#clientes" },
-	{ label: "Industrias", href: "#verticales" },
-	{ label: "Contacto", href: "#contacto" },
+	{ label: "Clientes", href: "/#clientes" },
+	{ label: "Industrias", href: "/#verticales" },
+	{ label: "Contacto", href: "/#contacto" },
 ];
 ---
 
 <header>
 	<div class="wrap nav">
-		<a href="#" class="brand">
+		<a href="/" class="brand">
 			<img src="img/logo-codefactory.png" alt="CodeFactory" />
 			CodeFactory
 		</a>
@@ -64,7 +63,7 @@ const companyLinks = [
 						<span class="kicker">Producto destacado</span>
 						<h4>Facturador DTE está disponible</h4>
 						<p>Emisión, firma y sello automático ante el Ministerio de Hacienda. Intégralo a tu sistema o punto de venta sin infraestructura propia.</p>
-						<a href="#dte">Ver facturador →</a>
+						<a href="/soluciones/facturacion-dte">Ver facturador →</a>
 					</div>
 				</div>
 			</div>
@@ -79,7 +78,7 @@ const companyLinks = [
 					{companyLinks.map((link) => <a href={link.href}>{link.label}</a>)}
 				</div>
 			</div>
-			<a href="#contacto" class="nav-direct">Citas</a>
+			<a href="/#contacto" class="nav-direct">Citas</a>
 		</nav>
 		<div class="nav-right">
 			<a href="tel:+50300000000" class="nav-phone">
@@ -100,7 +99,7 @@ const companyLinks = [
 				</a>
 			</div>
 			<a href="#" class="btn btn-login">Iniciar sesión</a>
-			<a href="#contacto" class="btn btn-accent">Contáctenos</a>
+			<a href="/#contacto" class="btn btn-accent">Contáctenos</a>
 			<button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
 		</div>
 	</div>

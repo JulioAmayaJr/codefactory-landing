@@ -1,0 +1,58 @@
+---
+const odooApps = [
+	{ icon: "◈", label: "CRM" },
+	{ icon: "▤", label: "Contabilidad" },
+	{ icon: "▦", label: "Inventario" },
+	{ icon: "▣", label: "POS" },
+	{ icon: "⚙", label: "Manufactura" },
+];
+---
+
+<section class="hero">
+	<div class="wrap hero-inner">
+		<div>
+			<span class="hero-badge">Soluciones · Odoo ERP</span>
+			<h1>Implementamos Odoo de punta a punta</h1>
+			<p class="lead">Diagnóstico, configuración, capacitación, hosting y soporte continuo. Transformamos empresas de El Salvador con Odoo.</p>
+			<div style="display:flex;gap:14px;flex-wrap:wrap">
+				<a href="/#contacto" class="btn btn-accent">Hablemos de tu Odoo</a>
+				<a href="/#clientes" class="btn btn-outline">Ver clientes</a>
+			</div>
+		</div>
+		<div class="feature-card reveal">
+			<span class="tag">Clientes en producción</span>
+			<div class="odoo-stat">+4</div>
+			<p class="odoo-stat-label">empresas en producción</p>
+			<div class="odoo-app-chips">
+				{odooApps.map((app) => (
+					<span class="odoo-app">
+						<span class="odoo-app-icon">{app.icon}</span>
+						{app.label}
+					</span>
+				))}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+.hero{background:var(--navy);color:var(--white);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-200px;right:-200px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(0,194,255,.16),transparent 65%);pointer-events:none}
+.hero::after{content:"";position:absolute;bottom:-260px;left:-160px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(56,224,176,.10),transparent 65%);pointer-events:none}
+.hero-inner{display:grid;grid-template-columns:1.08fr .92fr;gap:64px;align-items:center;padding:104px 0 90px;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,194,255,.12);border:1px solid rgba(0,194,255,.3);color:var(--accent);font-size:13px;font-weight:700;padding:7px 16px;border-radius:999px;margin-bottom:26px}
+.hero h1{font-size:clamp(34px,4.6vw,56px);font-weight:900;margin-bottom:22px}
+.hero .lead{font-size:18px;color:var(--dark-text);max-width:540px;margin-bottom:34px}
+
+.feature-card{background:linear-gradient(160deg,var(--navy-2),var(--navy-3));border:1px solid var(--dark-line);border-radius:var(--radius);padding:34px;box-shadow:0 34px 90px rgba(0,0,0,.45);position:relative}
+.feature-card .tag{display:inline-block;background:var(--accent);color:var(--navy);font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:6px;margin-bottom:18px}
+.odoo-stat{font-size:52px;font-weight:900;color:var(--white);line-height:1}
+.odoo-stat-label{font-size:14.5px;color:var(--dark-text);margin-top:6px;margin-bottom:26px}
+.odoo-app-chips{display:flex;flex-wrap:wrap;gap:10px}
+.odoo-app{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid var(--dark-line);border-radius:999px;padding:8px 14px 8px 8px;font-size:13.5px;font-weight:600}
+.odoo-app-icon{width:24px;height:24px;border-radius:7px;background:rgba(0,194,255,.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px}
+
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:48px}
+}
+</style>

@@ -1,0 +1,44 @@
+---
+const platformStats = [
+	{ count: 15, suffix: "M", label: "usuarios activos en el mundo" },
+	{ count: 40, suffix: "K+", label: "apps en el ecosistema" },
+	{ count: 100, suffix: "%", label: "open source · sin vendor lock-in" },
+	{ staticValue: "v19", label: "la versión más reciente, dominada" },
+];
+---
+
+<section class="section">
+	<div class="wrap">
+		<span class="kicker dark">Odoo ERP</span>
+		<h2>Una sola plataforma para todo tu negocio</h2>
+		<p class="sub">Odoo es el ERP modular más usado del mundo: CRM, ventas, inventario, contabilidad, recursos humanos, sitio web y más — todo integrado en un solo sistema.</p>
+		<p class="sub">En CodeFactory implementamos, configuramos, migramos entre versiones, capacitamos a tu equipo y damos soporte continuo para que tu operación no dependa de nadie más.</p>
+		<div class="platform-grid">
+			{platformStats.map((stat) => (
+				<div class="platform-stat reveal">
+					{stat.count ? (
+						<b data-count={stat.count} data-suffix={stat.suffix}>0</b>
+					) : (
+						<b>{stat.staticValue}</b>
+					)}
+					<span>{stat.label}</span>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+.platform-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.platform-stat{background:var(--white);border:1px solid var(--gray-line);border-radius:var(--radius);padding:28px 22px;text-align:center;transition:all .22s ease}
+.platform-stat:hover{transform:translateY(-4px);box-shadow:0 22px 54px rgba(1,30,65,.10)}
+.platform-stat b{display:block;font-size:clamp(24px,2.6vw,32px);font-weight:900;color:#0084b8}
+.platform-stat span{font-size:13.5px;color:var(--gray-text);font-weight:500}
+
+@media (max-width:900px){
+  .platform-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  .platform-grid{grid-template-columns:1fr}
+}
+</style>
