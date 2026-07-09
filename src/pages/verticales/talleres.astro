@@ -2,12 +2,31 @@
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import PageHero from "../../components/shared/PageHero.astro";
-import MockCard from "../../components/shared/MockCard.astro";
 import FeatureGrid from "../../components/shared/FeatureGrid.astro";
 import ModuleChips from "../../components/shared/ModuleChips.astro";
 import StatsBand from "../../components/shared/StatsBand.astro";
 import Cta from "../../components/Cta.astro";
 import Footer from "../../components/Footer.astro";
+
+const metrics = [
+	{ icon: "/img/icons/talleres/vehiculos.svg", value: "42", label: "Vehículos en taller", sublabel: "Vehículos activos" },
+	{ icon: "/img/icons/talleres/citas.svg", value: "18", label: "Citas hoy", sublabel: "Servicios programados" },
+	{ icon: "/img/icons/talleres/reparaciones.svg", value: "11", label: "Reparaciones en proceso", sublabel: "Órdenes abiertas" },
+	{ icon: "/img/icons/talleres/tecnicos.svg", value: "8", label: "Técnicos activos", sublabel: "Trabajando" },
+];
+
+const featuredOrder = {
+	icon: "/img/icons/talleres/vehiculo-activo.svg",
+	title: "Toyota Hilux · P-123456",
+	service: "Cambio de embrague",
+	technician: "Carlos Méndez",
+	status: "En proceso",
+};
+
+const floatChips = [
+	{ icon: "/img/icons/talleres/experiencia.svg", text: "+10 años de experiencia", style: "bottom:56px;left:-192px" },
+	{ icon: "/img/icons/talleres/certificado.svg", text: "Servicio confiable", style: "bottom:108px;right:-20px" },
+];
 
 const features = [
 	{ icon: "◎", title: "Órdenes de trabajo kanban", desc: "Cada vehículo avanza por etapas visibles: recepción, diagnóstico, reparación y entrega." },
@@ -43,43 +62,59 @@ const whyMetrics = [
 		ctaPrimary={{ text: "Solicitar demo", href: "/#contacto" }}
 		ctaSecondary={{ text: "Ver clientes", href: "/#clientes" }}
 	>
-		<MockCard
-			icon="◎"
-			title="Órdenes de trabajo"
-			badgeText="En proceso"
-			badgeTone="live"
-			floats={[
-				{ icon: "▤", text: "Órdenes por etapas", style: "top:-16px;left:28px" },
-				{ text: "Anticipos en POS", style: "top:-16px;right:-16px" },
-				{ text: "Control de repuestos", style: "bottom:-16px;right:30px" },
-			]}
-		>
-			<div class="kanban">
-				<div class="kanban-col">
-					<span class="kanban-label">Recepción</span>
-					<div class="kanban-count">2</div>
-				</div>
-				<div class="kanban-col active">
-					<span class="kanban-label">Diagnóstico</span>
-					<div class="kanban-count">1</div>
-				</div>
-				<div class="kanban-col">
-					<span class="kanban-label">Reparación</span>
-					<div class="kanban-count">3</div>
-				</div>
-				<div class="kanban-col">
-					<span class="kanban-label">Entrega</span>
-					<div class="kanban-count">1</div>
-				</div>
+		<div class="td-dash reveal">
+			<div class="td-head">
+				<img src="/img/icons/talleres/header.svg" width="28" height="28" alt="" />
+				<span class="td-head-title"><b>Taller · </b>Live Dashboard</span>
+				<span class="td-badge-outline">Operativo</span>
 			</div>
-			<div class="kanban-order">
-				<span class="kanban-order-dot"></span>
-				<div>
-					<b>Vehículo #312 · Cambio de frenos</b>
-					<span>EN PROCESO</span>
-				</div>
+			<div class="td-graph">
+				<span class="td-graph-label">Órdenes de trabajo del día</span>
+				<svg class="td-graph-svg" viewBox="0 0 400 80" preserveAspectRatio="none">
+					<defs>
+						<filter id="td-glow" x="-50%" y="-50%" width="200%" height="200%">
+							<feGaussianBlur stdDeviation="4" result="blur" />
+							<feMerge>
+								<feMergeNode in="blur" />
+								<feMergeNode in="SourceGraphic" />
+							</feMerge>
+						</filter>
+					</defs>
+					<polyline class="td-graph-line" points="0,62 35,58 70,60 105,46 140,50 175,36 210,40 245,24 280,29 315,16 350,20 400,8" />
+					<circle class="td-graph-glow" cx="400" cy="8" r="9" />
+					<circle class="td-graph-dot" cx="400" cy="8" r="4" />
+				</svg>
 			</div>
-		</MockCard>
+			<div class="td-metrics">
+				{metrics.map((metric) => (
+					<div class="td-metric">
+						<img class="td-metric-icon" src={metric.icon} width="44" height="44" alt="" />
+						<div class="td-metric-body">
+							<span class="td-metric-value">{metric.value}</span>
+							<span class="td-metric-label">{metric.label}</span>
+							<span class="td-metric-sub">{metric.sublabel}</span>
+						</div>
+					</div>
+				))}
+			</div>
+			<div class="td-featured">
+				<span class="td-featured-icon">
+					<img src={featuredOrder.icon} width="24" height="24" alt="" />
+				</span>
+				<div class="td-featured-body">
+					<b class="td-featured-title">{featuredOrder.title}</b>
+					<span class="td-featured-line">{featuredOrder.service}</span>
+					<span class="td-featured-line">Técnico: <span class="td-featured-tech">{featuredOrder.technician}</span></span>
+				</div>
+				<span class="td-badge-fill">{featuredOrder.status}</span>
+			</div>
+			{floatChips.map((chip) => (
+				<div class="td-float" style={chip.style}>
+					<img src={chip.icon} width="16" height="16" alt="" />
+					{chip.text}
+				</div>
+			))}
+		</div>
 	</PageHero>
 
 	<FeatureGrid kicker="Características" title="Todo lo que necesita tu taller" items={features} />
@@ -93,14 +128,43 @@ const whyMetrics = [
 </Layout>
 
 <style>
-.kanban{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
-.kanban-col{background:rgba(255,255,255,.05);border:1px solid var(--dark-line);border-radius:10px;padding:12px 8px;text-align:center}
-.kanban-col.active{border-color:var(--accent);background:rgba(0,194,255,.08)}
-.kanban-label{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:#a9bcd4;margin-bottom:8px}
-.kanban-count{font-size:20px;font-weight:900;color:var(--white)}
-.kanban-col.active .kanban-count{color:var(--accent)}
-.kanban-order{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid var(--dark-line);border-radius:10px;padding:12px 14px}
-.kanban-order-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
-.kanban-order b{display:block;font-size:12.5px;font-weight:700}
-.kanban-order span{font-size:10.5px;color:var(--accent);font-weight:800;letter-spacing:.03em}
+.td-dash{position:relative;background:#0a1428;border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:28px;box-shadow:0 34px 90px rgba(0,0,0,.5);color:var(--white)}
+
+.td-head{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.td-head img{object-fit:contain;flex-shrink:0}
+.td-head-title{flex:1;font-size:15px;font-weight:400}
+.td-head-title b{font-weight:800}
+.td-badge-outline{border:1px solid var(--accent-2);color:var(--accent-2);background:transparent;padding:5px 12px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;flex-shrink:0}
+
+.td-graph{margin-bottom:24px}
+.td-graph-label{display:block;font-size:12px;color:#a9bcd4;margin-bottom:10px;font-weight:600}
+.td-graph-svg{width:100%;height:70px;display:block}
+.td-graph-line{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.td-graph-glow{fill:var(--accent);opacity:.35;filter:url(#td-glow)}
+.td-graph-dot{fill:var(--accent)}
+
+.td-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:20px}
+.td-metric{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px}
+.td-metric-icon{object-fit:contain;flex-shrink:0}
+.td-metric-body{display:flex;flex-direction:column;gap:3px}
+.td-metric-value{font-size:32px;font-weight:800;line-height:1}
+.td-metric-label{font-size:13px;font-weight:600;color:#c9d6e6}
+.td-metric-sub{font-size:11.5px;color:#7e94b3}
+
+.td-featured{display:flex;align-items:center;gap:14px;border:1px solid var(--accent);border-radius:16px;padding:16px 18px;background:rgba(0,194,255,.06)}
+.td-featured-icon{width:48px;height:48px;border-radius:50%;background:rgba(0,194,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.td-featured-icon img{object-fit:contain}
+.td-featured-body{flex:1;display:flex;flex-direction:column;gap:3px}
+.td-featured-title{font-size:14px;font-weight:800}
+.td-featured-line{font-size:12.5px;color:#a9bcd4;line-height:1.5}
+.td-featured-tech{color:var(--accent-2);font-weight:700}
+.td-badge-fill{background:rgba(56,224,176,.15);color:var(--accent-2);border:1px solid rgba(56,224,176,.35);padding:5px 12px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;flex-shrink:0}
+
+.td-float{position:absolute;display:inline-flex;align-items:center;gap:7px;background:var(--navy);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 14px;font-size:13px;font-weight:700;color:var(--white);box-shadow:0 14px 30px rgba(1,30,65,.35);white-space:nowrap;z-index:2}
+.td-float img{object-fit:contain;flex-shrink:0}
+
+@media (max-width:900px){
+  .td-metrics{grid-template-columns:1fr}
+  .td-float{display:none}
+}
 </style>
