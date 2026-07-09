@@ -1,0 +1,126 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import PageHero from "../../components/shared/PageHero.astro";
+import MockCard from "../../components/shared/MockCard.astro";
+import FeatureGrid from "../../components/shared/FeatureGrid.astro";
+import StatsBand from "../../components/shared/StatsBand.astro";
+import Cta from "../../components/Cta.astro";
+import Footer from "../../components/Footer.astro";
+
+const introStats = [
+	{ count: 10, prefix: "+", label: "años de experiencia" },
+	{ count: 4, suffix: "+", label: "empresas en producción" },
+	{ count: 100, suffix: "%", label: "DTE con normativa vigente" },
+	{ count: 24, suffix: "/7", label: "soporte y monitoreo" },
+];
+
+const features = [
+	{ icon: "▤", title: "Módulos Odoo personalizados", desc: "Funcionalidad que Odoo no trae de fábrica, adaptada a tus procesos reales." },
+	{ icon: "◈", title: "Aplicaciones web", desc: "Portales y sistemas a medida conectados a tu operación." },
+	{ icon: "▥", title: "Apps móviles para equipos de campo", desc: "Herramientas móviles para tu equipo en terreno, sincronizadas en tiempo real." },
+	{ icon: "⚙", title: "Integraciones por API", desc: "Conectamos tu sistema con pasarelas de pago, marketplaces y proveedores externos." },
+	{ icon: "↻", title: "Automatización de procesos", desc: "Flujos que hoy hacés a mano, corriendo solos dentro de tu sistema." },
+	{ icon: "▣", title: "Dashboards gerenciales", desc: "Reportes y tableros a la medida para decidir con datos reales." },
+];
+
+const whyMetrics = [
+	{ count: 10, prefix: "+", label: "años de experiencia" },
+	{ count: 4, suffix: "+", label: "empresas en producción" },
+	{ count: 100, suffix: "%", label: "DTE con normativa vigente" },
+	{ count: 24, suffix: "/7", label: "soporte y monitoreo" },
+];
+---
+
+<Layout
+	title="Desarrollos y Automatizaciones · CodeFactory"
+	description="Software a la medida, módulos Odoo personalizados, integraciones por API y automatización de procesos para empresas de El Salvador."
+>
+	<Header />
+	<PageHero
+		theme="dark"
+		badge="Soluciones · Desarrollo"
+		title="Software <em>a la medida</em> que tu negocio necesita"
+		description="Módulos Odoo personalizados, aplicaciones web y móviles, integraciones por API y automatización de procesos. Construimos lo que tu operación realmente necesita."
+		ctaPrimary={{ text: "Conversemos tu proyecto", href: "/#contacto" }}
+		ctaSecondary={{ text: "Ver clientes", href: "/#clientes" }}
+	>
+		<MockCard
+			icon="◆"
+			title="deploy.sh"
+			badgeText="En producción"
+			badgeTone="live"
+			floats={[
+				{ icon: "⚙", text: "APIs e integraciones", style: "top:-18px;right:-24px" },
+				{ icon: "◆", text: "Módulos Odoo custom", style: "bottom:-18px;left:-20px" },
+			]}
+		>
+			<div class="term">
+				<div class="term-bar">
+					<span class="term-dot red"></span>
+					<span class="term-dot yellow"></span>
+					<span class="term-dot green"></span>
+				</div>
+				<div class="term-body">
+					<p><span class="t-comment"># despliegue de módulo custom</span></p>
+					<p><span class="t-kw">def</span> <span class="t-fn">action_confirm_order</span>(self):</p>
+					<p>&nbsp;&nbsp;self.<span class="t-fn">generar_dte</span>()</p>
+					<p>&nbsp;&nbsp;self.state = <span class="t-str">'confirmado'</span></p>
+					<p><span class="t-comment">✓ Tests: 24 passed</span></p>
+				</div>
+			</div>
+		</MockCard>
+	</PageHero>
+
+	<section class="section">
+		<div class="wrap">
+			<span class="kicker dark">Desarrollo a la medida</span>
+			<h2>Construido para cómo trabajás vos</h2>
+			<p class="sub">No partimos de una plantilla genérica. Levantamos tus procesos reales y construimos el módulo, la integración o la app que tu negocio necesita — dentro de Odoo o por fuera de él.</p>
+			<p class="sub">Desde un cotizador interno hasta una app para tu equipo de campo, el desarrollo queda integrado a tu sistema, no aislado en una herramienta más.</p>
+			<div class="intro-grid">
+				{introStats.map((stat) => (
+					<div class="intro-stat reveal">
+						<b data-count={stat.count} data-prefix={stat.prefix} data-suffix={stat.suffix}>0</b>
+						<span>{stat.label}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<FeatureGrid kicker="Lo que hacemos" title="Características del servicio" items={features} gray />
+
+	<StatsBand kicker="Lo que nos respalda" title="Por qué CodeFactory" items={whyMetrics} />
+
+	<Cta />
+	<Footer />
+</Layout>
+
+<style>
+.term{background:rgba(0,0,0,.25);border-radius:10px;overflow:hidden;font-family:'SF Mono',Menlo,Consolas,monospace}
+.term-bar{display:flex;gap:6px;padding:10px 14px;background:rgba(255,255,255,.04)}
+.term-dot{width:9px;height:9px;border-radius:50%}
+.term-dot.red{background:#ff5f57}
+.term-dot.yellow{background:#febc2e}
+.term-dot.green{background:#28c840}
+.term-body{padding:16px;font-size:12.5px;line-height:1.9}
+.term-body p{white-space:pre}
+.t-comment{color:#7e94b3}
+.t-kw{color:#ff8fb3}
+.t-fn{color:var(--accent)}
+.t-str{color:var(--accent-2)}
+
+.intro-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
+.intro-stat{background:var(--white);border:1px solid var(--gray-line);border-radius:var(--radius);padding:24px 20px;text-align:center;transition:all .22s ease}
+.intro-stat:hover{transform:translateY(-4px);box-shadow:0 22px 54px rgba(1,30,65,.10)}
+.intro-stat b{display:block;font-size:clamp(22px,2.4vw,28px);font-weight:900;color:#0084b8}
+.intro-stat span{font-size:13px;color:var(--gray-text);font-weight:500}
+
+@media (max-width:900px){
+  .intro-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  .intro-grid{grid-template-columns:1fr}
+}
+</style>

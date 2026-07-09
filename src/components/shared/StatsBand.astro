@@ -1,0 +1,43 @@
+---
+interface StatItem {
+	count?: number;
+	prefix?: string;
+	suffix?: string;
+	staticValue?: string;
+	label: string;
+}
+
+interface Props {
+	kicker: string;
+	title: string;
+	items: StatItem[];
+}
+
+const { kicker, title, items } = Astro.props;
+---
+
+<section class="sb-band">
+	<div class="wrap">
+		<span class="kicker">{kicker}</span>
+		<h2>{title}</h2>
+		<div class="sb-grid">
+			{items.map((item) => (
+				<div class="sb-metric reveal">
+					{item.count ? (
+						<b data-count={item.count} data-prefix={item.prefix} data-suffix={item.suffix}>0</b>
+					) : (
+						<b>{item.staticValue}</b>
+					)}
+					<span>{item.label}</span>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+.sb-band{background:var(--navy);color:var(--white);padding:88px 0}
+.sb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;margin-top:52px;text-align:center}
+.sb-metric b{display:block;font-size:clamp(22px,2.6vw,32px);font-weight:900;color:var(--accent)}
+.sb-metric span{font-size:13.5px;color:var(--dark-text);font-weight:500}
+</style>

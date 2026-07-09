@@ -1,0 +1,116 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import PageHero from "../../components/shared/PageHero.astro";
+import MockCard from "../../components/shared/MockCard.astro";
+import FeatureGrid from "../../components/shared/FeatureGrid.astro";
+import StatsBand from "../../components/shared/StatsBand.astro";
+import Cta from "../../components/Cta.astro";
+import Footer from "../../components/Footer.astro";
+
+const introStats = [
+	{ count: 10, prefix: "+", label: "años de experiencia" },
+	{ count: 4, suffix: "+", label: "empresas en producción" },
+	{ count: 100, suffix: "%", label: "DTE con normativa vigente" },
+	{ count: 24, suffix: "/7", label: "soporte y monitoreo" },
+];
+
+const features = [
+	{ icon: "▲", title: "Upgrade entre versiones", desc: "Saltamos de tu versión actual a la más reciente sin perder configuración ni datos." },
+	{ icon: "◈", title: "Migración desde otros sistemas", desc: "Si venís de otro ERP o de hojas de cálculo, traemos tu información a Odoo ordenada." },
+	{ icon: "◎", title: "Auditoría previa", desc: "Revisamos tu sistema actual antes de mover un solo dato." },
+	{ icon: "▤", title: "Migración de datos maestros e historial", desc: "Clientes, productos, facturas y movimientos contables, completos y verificados." },
+	{ icon: "◆", title: "Módulos custom adaptados", desc: "Tus personalizaciones actuales se adaptan a la nueva versión, no se pierden." },
+	{ icon: "✚", title: "Validación post-migración", desc: "Confirmamos que cada reporte y saldo cuadra antes de dar por cerrada la migración." },
+];
+
+const whyMetrics = [
+	{ count: 10, prefix: "+", label: "años de experiencia" },
+	{ count: 4, suffix: "+", label: "empresas en producción" },
+	{ count: 100, suffix: "%", label: "DTE con normativa vigente" },
+	{ count: 24, suffix: "/7", label: "soporte y monitoreo" },
+];
+---
+
+<Layout
+	title="Migraciones Odoo · CodeFactory"
+	description="Upgrade entre versiones de Odoo o migración desde otros sistemas, sin perder historial contable ni detener tu operación."
+>
+	<Header />
+	<PageHero
+		theme="dark"
+		badge="Soluciones · Migraciones"
+		title="Migrá de versión <em>sin perder tu historial</em>"
+		description="Upgrade entre versiones de Odoo o migración de datos desde otros sistemas, con auditoría previa y validación posterior. Sin perder historial contable ni detener tu operación."
+		ctaPrimary={{ text: "Solicitar diagnóstico", href: "/#contacto" }}
+		ctaSecondary={{ text: "Ver clientes", href: "/#clientes" }}
+	>
+		<MockCard
+			icon="▲"
+			title="migración.log"
+			badgeText="v18 → v19"
+			badgeTone="live"
+			floats={[
+				{ icon: "⚙", text: "Sin downtime", style: "top:-18px;right:-24px" },
+				{ icon: "▤", text: "Historial contable intacto", style: "bottom:-18px;left:-20px" },
+			]}
+		>
+			<div class="mig-progress">
+				<div class="mig-bar"><div class="mig-fill"></div></div>
+				<span class="mig-pct">82%</span>
+			</div>
+			<div class="mig-steps">
+				<div class="mig-step"><span>✓</span> Datos</div>
+				<div class="mig-step"><span>✓</span> Módulos</div>
+				<div class="mig-step"><span>✓</span> Reportes</div>
+			</div>
+		</MockCard>
+	</PageHero>
+
+	<section class="section">
+		<div class="wrap">
+			<span class="kicker dark">Migraciones Odoo</span>
+			<h2>Cambiar de versión sin frenar tu operación</h2>
+			<p class="sub">Migrar no debería significar semanas a ciegas. Auditamos tu sistema actual, migramos en un entorno de prueba y validamos cada dato antes de pasar a producción.</p>
+			<p class="sub">Tu contabilidad, tu inventario y tu historial de clientes llegan intactos a la nueva versión.</p>
+			<div class="intro-grid">
+				{introStats.map((stat) => (
+					<div class="intro-stat reveal">
+						<b data-count={stat.count} data-prefix={stat.prefix} data-suffix={stat.suffix}>0</b>
+						<span>{stat.label}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<FeatureGrid kicker="Lo que hacemos" title="Características del servicio" items={features} gray />
+
+	<StatsBand kicker="Lo que nos respalda" title="Por qué CodeFactory" items={whyMetrics} />
+
+	<Cta />
+	<Footer />
+</Layout>
+
+<style>
+.mig-progress{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.mig-bar{flex:1;height:8px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.mig-fill{width:82%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:999px}
+.mig-pct{font-size:13px;font-weight:800;color:var(--accent)}
+.mig-steps{display:flex;flex-direction:column;gap:8px}
+.mig-step{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid var(--dark-line);border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600}
+.mig-step span{color:var(--accent-2);font-weight:800}
+
+.intro-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
+.intro-stat{background:var(--white);border:1px solid var(--gray-line);border-radius:var(--radius);padding:24px 20px;text-align:center;transition:all .22s ease}
+.intro-stat:hover{transform:translateY(-4px);box-shadow:0 22px 54px rgba(1,30,65,.10)}
+.intro-stat b{display:block;font-size:clamp(22px,2.4vw,28px);font-weight:900;color:#0084b8}
+.intro-stat span{font-size:13px;color:var(--gray-text);font-weight:500}
+
+@media (max-width:900px){
+  .intro-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  .intro-grid{grid-template-columns:1fr}
+}
+</style>

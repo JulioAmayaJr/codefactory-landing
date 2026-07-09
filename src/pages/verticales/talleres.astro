@@ -1,0 +1,106 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import PageHero from "../../components/shared/PageHero.astro";
+import MockCard from "../../components/shared/MockCard.astro";
+import FeatureGrid from "../../components/shared/FeatureGrid.astro";
+import ModuleChips from "../../components/shared/ModuleChips.astro";
+import StatsBand from "../../components/shared/StatsBand.astro";
+import Cta from "../../components/Cta.astro";
+import Footer from "../../components/Footer.astro";
+
+const features = [
+	{ icon: "◎", title: "Órdenes de trabajo kanban", desc: "Cada vehículo avanza por etapas visibles: recepción, diagnóstico, reparación y entrega." },
+	{ icon: "▤", title: "Presupuestos y anticipos", desc: "Aprobá el presupuesto con el cliente y cobrá el anticipo antes de empezar." },
+	{ icon: "▦", title: "Consumo de repuestos ligado a inventario", desc: "Cada repuesto usado se descuenta del inventario automáticamente." },
+	{ icon: "▣", title: "Cobro desde POS", desc: "Cerrá la orden y cobrá sin salir del sistema." },
+	{ icon: "⚡", title: "Facturación DTE", desc: "Factura o Crédito Fiscal transmitidos al Ministerio de Hacienda al momento del cobro." },
+	{ icon: "◈", title: "Historial por vehículo", desc: "Consultá el historial completo de servicios de cada vehículo que entra a tu taller." },
+];
+
+const modules = [
+	{ name: "Módulos incluidos", apps: ["Órdenes de Trabajo", "Inventario/Repuestos", "Punto de Venta", "Contabilidad", "Facturación electrónica", "Reportes"] },
+];
+
+const whyMetrics = [
+	{ count: 10, prefix: "+", label: "años de experiencia" },
+	{ count: 4, suffix: "+", label: "empresas en producción" },
+	{ count: 100, suffix: "%", label: "DTE con normativa vigente" },
+	{ count: 24, suffix: "/7", label: "soporte y monitoreo" },
+];
+---
+
+<Layout
+	title="Talleres Automotrices · CodeFactory"
+	description="Órdenes de trabajo por etapas, anticipos, control de repuestos y facturación DTE para talleres automotrices en El Salvador."
+>
+	<Header />
+	<PageHero
+		theme="light"
+		badge="Verticales · Talleres automotrices"
+		title="Tu taller <em>organizado</em> de la recepción a la entrega"
+		description="Órdenes de trabajo por etapas, anticipos, consumo de repuestos y facturación electrónica conectados en un solo sistema. Pensado para talleres como Taller Super Mario's."
+		ctaPrimary={{ text: "Solicitar demo", href: "/#contacto" }}
+		ctaSecondary={{ text: "Ver clientes", href: "/#clientes" }}
+	>
+		<MockCard
+			icon="◎"
+			title="Órdenes de trabajo"
+			badgeText="En proceso"
+			badgeTone="live"
+			floats={[
+				{ icon: "▤", text: "Órdenes por etapas", style: "top:-16px;left:28px" },
+				{ text: "Anticipos en POS", style: "top:-16px;right:-16px" },
+				{ text: "Control de repuestos", style: "bottom:-16px;right:30px" },
+			]}
+		>
+			<div class="kanban">
+				<div class="kanban-col">
+					<span class="kanban-label">Recepción</span>
+					<div class="kanban-count">2</div>
+				</div>
+				<div class="kanban-col active">
+					<span class="kanban-label">Diagnóstico</span>
+					<div class="kanban-count">1</div>
+				</div>
+				<div class="kanban-col">
+					<span class="kanban-label">Reparación</span>
+					<div class="kanban-count">3</div>
+				</div>
+				<div class="kanban-col">
+					<span class="kanban-label">Entrega</span>
+					<div class="kanban-count">1</div>
+				</div>
+			</div>
+			<div class="kanban-order">
+				<span class="kanban-order-dot"></span>
+				<div>
+					<b>Vehículo #312 · Cambio de frenos</b>
+					<span>EN PROCESO</span>
+				</div>
+			</div>
+		</MockCard>
+	</PageHero>
+
+	<FeatureGrid kicker="Características" title="Todo lo que necesita tu taller" items={features} />
+
+	<ModuleChips kicker="Módulos incluidos" title="Un sistema, todas las áreas de tu taller" categories={modules} note="Sumamos más módulos según cómo crezca tu taller." />
+
+	<StatsBand kicker="Resultados que respaldan la propuesta" title="Por qué CodeFactory" items={whyMetrics} />
+
+	<Cta />
+	<Footer />
+</Layout>
+
+<style>
+.kanban{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.kanban-col{background:rgba(255,255,255,.05);border:1px solid var(--dark-line);border-radius:10px;padding:12px 8px;text-align:center}
+.kanban-col.active{border-color:var(--accent);background:rgba(0,194,255,.08)}
+.kanban-label{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:#a9bcd4;margin-bottom:8px}
+.kanban-count{font-size:20px;font-weight:900;color:var(--white)}
+.kanban-col.active .kanban-count{color:var(--accent)}
+.kanban-order{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid var(--dark-line);border-radius:10px;padding:12px 14px}
+.kanban-order-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.kanban-order b{display:block;font-size:12.5px;font-weight:700}
+.kanban-order span{font-size:10.5px;color:var(--accent);font-weight:800;letter-spacing:.03em}
+</style>

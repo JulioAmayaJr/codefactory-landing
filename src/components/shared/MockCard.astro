@@ -1,0 +1,51 @@
+---
+interface FloatChip {
+	icon?: string;
+	text: string;
+	style: string;
+}
+
+interface Props {
+	icon: string;
+	title: string;
+	badgeText: string;
+	badgeTone?: "live" | "neutral";
+	floats?: FloatChip[];
+}
+
+const { icon, title, badgeText, badgeTone = "live", floats = [] } = Astro.props;
+---
+
+<div class="mock-card reveal">
+	<div class="mock-head">
+		<span class="mock-head-icon">{icon}</span>
+		<span class="mock-head-title">{title}</span>
+		<span class:list={["mock-badge", badgeTone]}>{badgeText}</span>
+	</div>
+	<div class="mock-body">
+		<slot />
+	</div>
+	{floats.map((f) => (
+		<div class="mock-float" style={f.style}>
+			{f.icon && <span class="mock-float-icon">{f.icon}</span>}
+			{f.text}
+		</div>
+	))}
+</div>
+
+<style>
+.mock-card{position:relative;background:linear-gradient(160deg,var(--navy-2),var(--navy-3));border:1px solid var(--dark-line);border-radius:var(--radius);padding:28px;box-shadow:0 34px 90px rgba(0,0,0,.45);color:var(--white)}
+.mock-head{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--dark-line)}
+.mock-head-icon{width:30px;height:30px;border-radius:8px;background:rgba(0,194,255,.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.mock-head-title{font-weight:700;font-size:14px;flex:1}
+.mock-badge{font-size:10.5px;font-weight:800;padding:4px 10px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase}
+.mock-badge.live{background:rgba(56,224,176,.15);color:var(--accent-2);border:1px solid rgba(56,224,176,.35)}
+.mock-badge.neutral{background:rgba(255,255,255,.08);color:#a9bcd4;border:1px solid var(--dark-line)}
+
+.mock-float{position:absolute;display:inline-flex;align-items:center;gap:7px;background:var(--navy);border:1px solid var(--dark-line);border-radius:12px;padding:10px 14px;font-size:12.5px;font-weight:700;box-shadow:0 14px 30px rgba(1,30,65,.35);white-space:nowrap;z-index:2}
+.mock-float-icon{width:18px;height:18px;border-radius:5px;background:rgba(0,194,255,.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:10px}
+
+@media (max-width:900px){
+  .mock-float{display:none}
+}
+</style>
