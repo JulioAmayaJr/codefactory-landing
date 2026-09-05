@@ -1,17 +1,17 @@
 ---
 const serviceItems = [
-	{ icon: "⚙", title: "Implementación de Odoo ERP", subtitle: "Consultoría, desarrollo y soporte", href: "/soluciones/odoo" },
-	{ icon: "◆", title: "Desarrollos y Automatizaciones", subtitle: "Software a medida e integraciones", href: "/soluciones/desarrollo" },
-	{ icon: "▣", title: "Soporte y Hosting Odoo", subtitle: "Continuidad operativa y monitoreo", href: "/soluciones/hosting" },
-	{ icon: "▲", title: "Migraciones Odoo", subtitle: "Upgrade y migración sin perder historial", href: "/soluciones/migraciones" },
-	{ icon: "⚡", title: "Facturación electrónica", subtitle: "DTE, FEL e integraciones por API", href: "/soluciones/facturacion-dte" },
+	{ icon: "/img/icons/landing/implementacion.svg", title: "Implementación de Odoo ERP", subtitle: "Consultoría, desarrollo y soporte", href: "/soluciones/odoo" },
+	{ icon: "/img/icons/landing/codigo.svg", title: "Desarrollos y Automatizaciones", subtitle: "Software a medida e integraciones", href: "/soluciones/desarrollo" },
+	{ icon: "/img/icons/landing/nube.svg", title: "Soporte y Hosting Odoo", subtitle: "Continuidad operativa y monitoreo", href: "/soluciones/hosting" },
+	{ icon: "/img/icons/landing/migracion.svg", title: "Migraciones Odoo", subtitle: "Upgrade y migración sin perder historial", href: "/soluciones/migraciones" },
+	{ icon: "/img/icons/landing/documentos.svg", title: "Facturación electrónica", subtitle: "DTE, FEL e integraciones por API", href: "/soluciones/facturacion-dte" },
 ];
 
 const solutionItems = [
-	{ icon: "▦", title: "Retail y POS", subtitle: "Comercios multi-sucursal", href: "/verticales/retail" },
-	{ icon: "◈", title: "Talleres Automotrices", subtitle: "Órdenes de trabajo y POS de taller", href: "/verticales/talleres" },
-	{ icon: "▤", title: "Ferreterías y Distribución", subtitle: "Inventario grande y crédito fiscal", href: "/verticales/ferreterias" },
-	{ icon: "✚", title: "Mascotas y Acuarios", subtitle: "POS e inventario de productos vivos", href: "/verticales/mascotas" },
+	{ icon: "/img/icons/landing/retail.svg", title: "Retail y POS", subtitle: "Comercios multi-sucursal", href: "/verticales/retail" },
+	{ icon: "/img/icons/landing/taller.svg", title: "Talleres Automotrices", subtitle: "Órdenes de trabajo y POS de taller", href: "/verticales/talleres" },
+	{ icon: "/img/icons/landing/ferreteria.svg", title: "Ferreterías y Distribución", subtitle: "Inventario grande y crédito fiscal", href: "/verticales/ferreterias" },
+	{ icon: "/img/icons/landing/acuario.svg", title: "Mascotas y Acuarios", subtitle: "POS e inventario de productos vivos", href: "/verticales/mascotas" },
 ];
 
 const companyLinks = [
@@ -24,7 +24,7 @@ const companyLinks = [
 <header>
 	<div class="wrap nav">
 		<a href="/" class="brand">
-			<img src="img/logo-codefactory.png" alt="CodeFactory" />
+			<img src="/img/logo-codefactory.jpg" alt="CodeFactory" />
 			CodeFactory
 		</a>
 		<nav class="nav-links" id="navLinks">
@@ -41,7 +41,11 @@ const companyLinks = [
 							<span class="mega-label">Servicios</span>
 							{serviceItems.map((item) => (
 								<a href={item.href} class="mega-item">
-									<span class="mega-icon">{item.icon}</span>
+									<span class="mega-icon">
+										{item.icon.startsWith("/")
+											? <span class="icon-mask" style={`--icon:url(${item.icon})`}></span>
+											: item.icon}
+									</span>
 									<span>
 										<b>{item.title}</b>
 										<small>{item.subtitle}</small>
@@ -53,7 +57,11 @@ const companyLinks = [
 							<span class="mega-label">Soluciones</span>
 							{solutionItems.map((item) => (
 								<a href={item.href} class="mega-item">
-									<span class="mega-icon">{item.icon}</span>
+									<span class="mega-icon">
+										{item.icon.startsWith("/")
+											? <span class="icon-mask" style={`--icon:url(${item.icon})`}></span>
+											: item.icon}
+									</span>
 									<span>
 										<b>{item.title}</b>
 										<small>{item.subtitle}</small>
@@ -84,24 +92,23 @@ const companyLinks = [
 			<a href="/#contacto" class="nav-direct">Citas</a>
 		</nav>
 		<div class="nav-right">
-			<a href="tel:+50300000000" class="nav-phone">
+			<a href="tel:+503 7875-4199" class="nav-phone">
 				<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 					<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
 				</svg>
-				+503 0000-0000
+				+503 7875-4199
 			</a>
 			<div class="socials">
-				<a href="#" aria-label="Facebook">
+				<a href="https://www.facebook.com/profile.php?id=61575564206638" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
 					<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.95v-7.04H7.9V12h2.6V9.8c0-2.57 1.53-4 3.87-4 1.12 0 2.3.2 2.3.2v2.5h-1.3c-1.28 0-1.68.8-1.68 1.62V12h2.86l-.46 2.91h-2.4v7.04A10 10 0 0 0 22 12z" /></svg>
 				</a>
-				<a href="#" aria-label="Instagram">
+				<a href="https://www.instagram.com/codefactorysv" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
 					<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4.5" /><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" /></svg>
 				</a>
 				<a href="#" aria-label="LinkedIn">
 					<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.85-2.05 3.8-2.05 4.07 0 4.82 2.68 4.82 6.17V23h-4v-6.62c0-1.58-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.5V23h-4V8.5z" /></svg>
 				</a>
 			</div>
-			<a href="#" class="btn btn-login">Iniciar sesión</a>
 			<a href="/#contacto" class="btn btn-accent">Contáctenos</a>
 			<button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
 		</div>
@@ -146,9 +153,11 @@ header{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1
 .mega-label{display:block;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#0084b8;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--gray-line)}
 .mega-item{display:flex;align-items:flex-start;gap:12px;padding:10px;border-radius:10px;color:var(--navy)}
 .mega-item:hover{background:var(--gray-bg)}
-.mega-icon{width:34px;height:34px;border-radius:9px;background:rgba(0,194,255,.1);color:#0084b8;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:background .18s ease,color .18s ease}
-.mega-item:hover .mega-icon{background:var(--accent);color:var(--white)}
-.mega-item b{display:block;font-size:14px;font-weight:700}
+.mega-icon{width:34px;height:34px;border-radius:9px;background:rgba(0,194,255,.1);color:#0084b8;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:background .18s ease,color .18s ease,transform .18s ease}
+.icon-mask{width:18px;height:18px;background:currentColor;-webkit-mask:var(--icon) center/contain no-repeat;mask:var(--icon) center/contain no-repeat}
+.mega-item:hover .mega-icon{background:var(--accent);color:var(--white);transform:scale(1.18) rotate(-8deg)}
+.mega-item b{display:block;font-size:14px;font-weight:700;transition:color .18s ease}
+.mega-item:hover b{color:#0084b8}
 .mega-item small{display:block;font-size:12.5px;color:var(--gray-text);font-weight:500;margin-top:2px}
 
 .mega-feature{background:var(--navy);color:var(--white);border-radius:12px;padding:22px}

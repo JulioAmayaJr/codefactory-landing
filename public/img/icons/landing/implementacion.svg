@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="96" height="96" fill="none" stroke="#1E2A4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <!-- cubo superior -->
+  <path d="M12 3l3.5 2v3L12 10 8.5 8V5L12 3z"/>
+  <path d="M8.5 5L12 7l3.5-2M12 7v3"/>
+  <!-- cubo inferior izquierdo -->
+  <path d="M7.5 11l3.5 2v3l-3.5 2L4 16v-3l3.5-2z"/>
+  <path d="M4 13l3.5 2 3.5-2M7.5 15v3"/>
+  <!-- cubo inferior derecho -->
+  <path d="M16.5 11l3.5 2v3l-3.5 2-3.5-2v-3l3.5-2z"/>
+  <path d="M13 13l3.5 2 3.5-2M16.5 15v3"/>
+</svg>

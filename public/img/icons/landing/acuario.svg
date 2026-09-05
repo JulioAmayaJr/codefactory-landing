@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="96" height="96" fill="#1E2A4A">
+  <!-- cuerpo del pez -->
+  <path d="M2.5 12c2.2-3.5 5.5-5.5 9-5.5 3.2 0 6 1.7 7.8 4.2.3.4.3 1 0 1.4-1.8 2.5-4.6 4.2-7.8 4.2-3.5 0-6.8-2-9-5.5 0-.3 0-.5 0-.8z"/>
+  <!-- cola -->
+  <path d="M2.5 12L2.5 12c-.8-1.6-1.5-3.4-1.5-3.4s2 .5 3.6 1.6c-.8.5-1.5 1.1-2.1 1.8.6.7 1.3 1.3 2.1 1.8C3 14.9 1 15.4 1 15.4s.7-1.8 1.5-3.4z" fill="#1E2A4A"/>
+  <!-- ojo -->
+  <circle cx="15.5" cy="11" r="1" fill="#FFFFFF"/>
+  <!-- burbujas -->
+  <circle cx="21" cy="6.5" r="1.2" fill="none" stroke="#1E2A4A" stroke-width="1.2"/>
+  <circle cx="22.5" cy="3.5" r="0.8" fill="none" stroke="#1E2A4A" stroke-width="1.1"/>
+</svg>

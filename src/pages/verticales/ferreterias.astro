@@ -2,12 +2,32 @@
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import PageHero from "../../components/shared/PageHero.astro";
-import MockCard from "../../components/shared/MockCard.astro";
+import MockDashboard from "../../components/shared/MockDashboard.astro";
 import FeatureGrid from "../../components/shared/FeatureGrid.astro";
 import ModuleChips from "../../components/shared/ModuleChips.astro";
 import StatsBand from "../../components/shared/StatsBand.astro";
 import Cta from "../../components/Cta.astro";
 import Footer from "../../components/Footer.astro";
+
+const metrics = [
+	{ icon: "/img/icons/ferreteria/ventas.svg", value: "128", label: "Ventas del día", sublabel: "Transacciones realizadas" },
+	{ icon: "/img/icons/ferreteria/cotizaciones.svg", value: "32", label: "Cotizaciones hoy", sublabel: "Solicitudes atendidas" },
+	{ icon: "/img/icons/ferreteria/inventario.svg", value: "1,256", label: "Productos en inventario", sublabel: "Disponibles" },
+	{ icon: "/img/icons/ferreteria/clientes.svg", value: "7", label: "Clientes atendidos", sublabel: "Hoy" },
+];
+
+const featuredProduct = {
+	icon: "/img/icons/ferreteria/producto.svg",
+	title: "Taladro Inalámbrico GSR 18V",
+	code: "06019K3000",
+	stock: "12 unidades",
+	location: "Pasillo 3 · Estante B",
+	status: "En stock",
+};
+
+const floatChips = [
+	{ icon: "/img/icons/ferreteria/calidad.svg", text: "Calidad y confianza", sublabel: "en cada producto", style: "bottom:128px;right:-20px" },
+];
 
 const features = [
 	{ icon: "▦", title: "Catálogo extenso con códigos de barra", desc: "Miles de productos organizados y listos para escanear en segundos." },
@@ -31,7 +51,7 @@ const whyMetrics = [
 ---
 
 <Layout
-	title="Ferreterías y Distribución · CodeFactory"
+	title="CodeFactory · Ferreterías y Distribución"
 	description="Catálogo extenso con códigos de barra, listas de precios, control de bodegas y Factura o CCF directo en caja para ferreterías en El Salvador."
 >
 	<Header />
@@ -43,29 +63,27 @@ const whyMetrics = [
 		ctaPrimary={{ text: "Solicitar demo", href: "/#contacto" }}
 		ctaSecondary={{ text: "Ver clientes", href: "/#clientes" }}
 	>
-		<MockCard
-			icon="▦"
-			title="Venta de mostrador"
-			badgeText="Venta activa"
-			badgeTone="live"
-			floats={[
-				{ icon: "▤", text: "Códigos de barra", style: "top:-16px;left:28px" },
-				{ text: "Listas de precios", style: "top:-16px;right:-16px" },
-				{ text: "Crédito fiscal al instante", style: "bottom:-16px;right:20px" },
-			]}
+		<MockDashboard
+			icon="/img/icons/ferreteria/header.svg"
+			titleBold="Ferretería"
+			titleNormal="Live Dashboard"
+			badgeText="Operativo"
+			metrics={metrics}
+			floats={floatChips}
 		>
-			<div class="scan-row">
-				<span class="scan-icon">▤</span>
-				<span>Escaneando código...</span>
+			<div class="fer-featured">
+				<span class="fer-featured-icon">
+					<img src={featuredProduct.icon} width="24" height="24" alt="" />
+				</span>
+				<div class="fer-featured-body">
+					<b class="fer-featured-title">{featuredProduct.title}</b>
+					<span class="fer-featured-line">Código: {featuredProduct.code}</span>
+					<span class="fer-featured-line">Stock disponible: <span class="fer-featured-highlight">{featuredProduct.stock}</span></span>
+					<span class="fer-featured-line">Ubicación: <span class="fer-featured-highlight">{featuredProduct.location}</span></span>
+				</div>
+				<span class="fer-badge-fill">{featuredProduct.status}</span>
 			</div>
-			<div class="pos-lines">
-				<div class="pos-line"><span>Cemento gris x10</span><b>$65.00</b></div>
-				<div class="pos-line"><span>Clavos 2" x5</span><b>$3.75</b></div>
-				<div class="pos-line"><span>Pintura blanca x2</span><b>$28.00</b></div>
-			</div>
-			<div class="pos-total"><span>Total</span><b>$96.75</b></div>
-			<button class="pos-btn pos-btn-accent pos-btn-full">Factura o CCF</button>
-		</MockCard>
+		</MockDashboard>
 	</PageHero>
 
 	<FeatureGrid kicker="Características" title="Todo lo que necesita tu ferretería" items={features} />
@@ -79,12 +97,12 @@ const whyMetrics = [
 </Layout>
 
 <style>
-.scan-row{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px dashed var(--dark-line);border-radius:8px;padding:10px 12px;margin-bottom:14px;font-size:12px;color:#a9bcd4}
-.scan-icon{width:20px;height:20px;border-radius:6px;background:rgba(0,194,255,.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
-.pos-lines{display:grid;gap:8px;margin-bottom:14px}
-.pos-line{display:flex;justify-content:space-between;background:rgba(255,255,255,.05);border:1px solid var(--dark-line);border-radius:8px;padding:10px 12px;font-size:13px}
-.pos-line span{color:#c9d6e6}
-.pos-line b{font-weight:700}
-.pos-total{display:flex;justify-content:space-between;padding:12px 4px;border-top:1px solid var(--dark-line);margin-bottom:16px;font-weight:800;font-size:14px}
-.pos-btn-full{width:100%;padding:11px;border-radius:8px;border:none;background:var(--accent);color:var(--navy);font-weight:700;font-size:12.5px;font-family:inherit;cursor:pointer}
+.fer-featured{display:flex;align-items:center;gap:14px;border:1px solid var(--accent);border-radius:16px;padding:16px 18px;background:rgba(0,194,255,.06)}
+.fer-featured-icon{width:48px;height:48px;border-radius:50%;background:rgba(0,194,255,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fer-featured-icon img{object-fit:contain}
+.fer-featured-body{flex:1;display:flex;flex-direction:column;gap:3px}
+.fer-featured-title{font-size:14px;font-weight:800}
+.fer-featured-line{font-size:12.5px;color:#a9bcd4;line-height:1.5}
+.fer-featured-highlight{color:var(--accent-2);font-weight:700}
+.fer-badge-fill{background:rgba(56,224,176,.15);color:var(--accent-2);border:1px solid rgba(56,224,176,.35);padding:5px 12px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;flex-shrink:0}
 </style>
